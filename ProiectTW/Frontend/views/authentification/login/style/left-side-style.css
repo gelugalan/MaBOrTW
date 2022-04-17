@@ -1,0 +1,122 @@
+.left-side-container{
+    position: relative;
+    height: 70vh;
+    width: 50vw;
+    left:10vw;
+    top:15vh;
+}
+
+.title-left-side
+{
+    font-size: 4rem;
+    color:#333;
+    z-index: 4;
+    text-align: center;
+    font-weight: 800;
+}
+
+.input-container
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    left:50%;
+    transform: translateX(-50%);
+    top:20%;
+}
+
+.input
+{
+    margin-top: 20px;
+}
+
+.input-text
+{
+    border:none;
+    background-color: rgba(0,0,0,.05);
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    transition:.25s ease;
+    color:#333;
+}
+
+.input-text:focus{
+    background: rgba(0,255,163,.5);
+    outline: none;
+    transform: scale(1.1);
+    letter-spacing: 1px;
+    font-weight: 500;
+    color:#555;
+}
+
+.submit-button
+{
+    position: relative;
+    width: fit-content;
+    left:50%;
+    transform: translateX(-50%);
+    border:none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: rgb(35,152,177);
+    background: linear-gradient(45deg, rgba(0,255,163,1) 0%, rgba(35,152,177,1) 80%);
+    color:white;
+    font-weight: 700;
+    font-size: 80%;
+    margin-top: 50px;
+    transition: .25s ease;
+}
+
+.submit-button:hover
+{
+    transform: translateX(-50%) scale(1.1);
+}
+
+@media screen and (max-width: 992px) {
+    .input-container
+    {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        left:50%;
+        transform: translateX(-50%);
+        top:20%;
+    }
+
+    .left-side-container{
+        width: 100vw;
+        left:0;
+    }
+
+    .input-text
+    {
+        font-size: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .input-container
+    {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        left:50%;
+        transform: translateX(-50%);
+        top:20%;
+    }
+
+    .left-side-container{
+        width: 100vw;
+        left:0;
+    }
+
+    .input-text
+    {
+        font-size: 80%;
+    }
+}
