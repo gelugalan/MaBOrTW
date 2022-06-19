@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="../navbar/style/style.css">
+
+    <title>Events</title>
+</head>
+
+<body>
+    <nav></nav>
+    <sectio class="contact">
+        <div class="content">
+            <h2>Contact Us</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum at neque magnam et aperiam eveniet,
+                nostrum consequatur id repellendus temporibus sunt ad aspernatur officia, facilis, soluta deleniti a
+                cupiditate molestias!</p>
+
+        </div>
+        <div class="container">
+            <div class="contactInfo">
+                <div class="box">
+                    <div class="icon"><img class="icon-style" src="../../../resources/icons/location.png"
+                            alt="location"></div>
+                    <div class="text">
+                        <h3>Adress</h3>
+                        <p>Tudor Vladimirescu 109,<br>Iasi,Romania,<br>700560</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon"><img class="icon-style" src="../../../resources/icons/phone.png" alt="phone">
+                    </div>
+                    <div class="text">
+                        <h3>Phone</h3>
+                        <p>0721573666</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon"><img class="icon-style" src="../../../resources/icons/mail.png" alt="email"></div>
+                    <div class="text">
+                        <h3>Email</h3>
+                        <p>gelugalan@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contactForm">
+                <form action="">
+                    <h2>Send Message</h2>
+                    <div class="inputBox">
+                        <input type="text" name="" required>
+                        <span>Full Name</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="" required>
+                        <span>Email</span>
+                    </div>
+                    <div class="inputBox">
+                        <textarea required="required" name="" id="" cols="22" rows="10"></textarea>
+                        <span>Type your Message</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" name="" value="Send">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        </section>
+
+
+
+        <script>
+            fetch("../navbar/navbar.html")
+                .then(response => {
+                    return response.text()
+                })
+                .then(data => {
+                    document.querySelector("nav").innerHTML = data;
+                });
+
+            fetch("../../components/event/event.html")
+                .then(response => {
+                    return response.text()
+                })
+                .then(data => {
+                    for (var i = 0; i < 13; i++)
+                        document.querySelector(".event").innerHTML += data;
+                });
+
+            function navigate(page) {
+                if (page == 'events') {
+                    window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
+                    return;
+                }
+                if (page == 'about') {
+                    window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/about/about.html";
+                    return;
+                }
+                if (page == 'contact') {
+                    window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/contact/contact.html";
+                    return;
+                }
+                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/" + page + "/" + page + ".html";
+            }
+
+
+
+
+            document.addEventListener('DOMContentLoaded', (event) => {
+                setTimeout(() => {
+                    var buttons = document.querySelectorAll(".button");
+                    buttons.forEach((e, x) => {
+                        e.addEventListener("click", (focusButton) => {
+                            buttons.forEach((element, index) => {
+                                element.classList.remove("btn-primary");
+                            })
+                            //console.log("dadaadad");
+                            //focusButton.srcElement.classList. // = [...focusButton.srcElement.classList, "btn-primary"];
+                            e.classList.add("btn-primary");
+                        })
+                    })
+                }, 1000);
+            })
+
+
+            function setCorrectTabl() {
+                var buttons = document.querySelectorAll(".button");
+                buttons.forEach((element, index) => {
+
+                    if (element.innerHTML != "About")
+                        element.classList.remove("btn-primary");
+                })
+
+            }
+
+        </script>
+</body>
+
+</html>

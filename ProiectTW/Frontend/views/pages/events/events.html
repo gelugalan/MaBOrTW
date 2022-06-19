@@ -6,11 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="../navbar/style/style.css">
+    <link rel="stylesheet" href="../../components/event//style/style.css">
+    <link rel="stylesheet" href="../../components/event//style/left-side-style.css">
+    <link rel="stylesheet" href="../../components//event//style/right-side-event.css">
+
     <title>Events</title>
 </head>
 <body>
     <nav></nav>
-    
+
+    <div class="events-container">
+        <div class="filter-wrapper">
+            <div class="page-title">Events</div>
+            <div class="actions-wrapper">
+                <input type="text" placeholder="Search..." class="search-input">
+                <div class="filter-button">Filter</div>
+            </div>
+        </div>
+
+        <div class="event"></div>
+    </div>
 
     <script>
         fetch("../navbar/navbar.html")
@@ -20,6 +35,69 @@
             .then(data => {
                 document.querySelector("nav").innerHTML = data;
             });
+
+        fetch("../../components/event/event.html")
+        .then(response => {
+            return response.text()
+        })
+        .then(data => {
+            for(var i = 0; i<13; i++)
+                document.querySelector(".event").innerHTML += data;
+        });
+
+        function navigate(page)
+        {
+            if(page == 'events')
+            {
+                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
+                return;
+            }
+            if(page == 'about')
+            {
+                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/about/about.html";
+                return;
+            }
+            if(page == 'contact')
+            {
+                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/contact/contact.html";
+                return;
+            }
+            window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/"+page+"/"+page+".html";
+        }
+
+       
+  
+    
+        document.addEventListener('DOMContentLoaded', (event) => {
+            setTimeout(()=>{
+                var buttons = document.querySelectorAll(".button");
+                buttons.forEach((e,x)=>
+                {
+                    e.addEventListener("click", (focusButton)=>
+                    {
+                        buttons.forEach((element,index) => {
+                            element.classList.remove("btn-primary");
+                        })
+                        //console.log("dadaadad");
+                        //focusButton.srcElement.classList. // = [...focusButton.srcElement.classList, "btn-primary"];
+                        e.classList.add("btn-primary");
+                    })
+                })
+            }, 1000);
+        })
+
+
+        function setCorrectTabl()
+        {
+            var buttons = document.querySelectorAll(".button");
+            buttons.forEach((element,index) => {
+                            
+                            if(element.innerHTML != "About")
+                                element.classList.remove("btn-primary");
+                        })
+            
+        }
+
     </script>
 </body>
 </html>

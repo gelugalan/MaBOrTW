@@ -1,0 +1,56 @@
+.nav-bar
+{
+    position: relative;
+    background-color: rgba(200,200,200,.5);
+    box-shadow: 0px 10px 15px rgba(0,0,0,.15);
+    height: 5vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.logo
+{
+    position: absolute;
+    left:5vw;
+    top:50%;
+    transform: translateY(-50%);
+    font-weight: 800;
+    font-size: 1.7rem;
+    background: -webkit-linear-gradient(45deg, #FFF 0%, #000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.buttons-wrapper
+{
+    display: flex;
+    width: 50vw;
+    margin-right: 100px;
+    justify-content:space-around;
+    align-items: center;
+    list-style-type:none;
+}
+
+.button{
+    cursor: pointer;
+    font-size: 100%;
+    font-weight: 600;
+    color:#555;
+    transition: .25s ease;
+   
+    padding:5px 10px;
+}
+
+/* .button:hover{
+    transform: scale(1);
+} */
+
+.btn-primary
+{
+    border-radius: 15px;
+    background: rgb(35,152,177);
+    background: linear-gradient(45deg, rgba(0,255,163,1) 0%, rgba(35,152,177,1) 80%);
+    color:white;
+}

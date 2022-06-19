@@ -23,7 +23,7 @@
     width: 40%;
     left:50%;
     transform: translateX(-50%);
-    top:20%;
+    top:0%;
 }
 
 .input
@@ -36,10 +36,11 @@
     border:none;
     background-color: rgba(0,0,0,.05);
     padding: 10px 25px;
-    font-size: 1.1rem;
+    font-size: 80%;
     border-radius: 25px;
     transition:.25s ease;
     color:#333;
+    
 }
 
 .input-text:focus{
@@ -47,8 +48,9 @@
     outline: none;
     transform: scale(1.1);
     letter-spacing: 1px;
-    font-weight: 500;
+    
     color:#555;
+    
 }
 
 .submit-button
@@ -74,6 +76,70 @@
 {
     transform: translateX(-50%) scale(1.1);
 }
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+    
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 60px;
+	height: 30px;
+	background: grey;
+	display: block;
+	border-radius: 50px;
+	position: relative;
+    
+    
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 45px;
+	transition: 0.3s;
+    
+    
+    
+}
+
+input:checked + label {
+	background: #bada55;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+    
+}
+
+label:active:after {
+	width: 100px;
+}
+.checkbox-container
+{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+
+}
+.checkbox-text
+{   width: 100%;
+    margin-right: 5px;
+    font-size: 90%;
+    transition:.25s ease;
+    text-align: left;
+    vertical-align: middle;
+    
+}
 
 @media screen and (max-width: 992px) {
     .input-container
@@ -84,7 +150,7 @@
         width: 50%;
         left:50%;
         transform: translateX(-50%);
-        top:20%;
+        top:10%;
     }
 
     .left-side-container{
@@ -96,6 +162,17 @@
     {
         font-size: 80%;
     }
+    .checkbox-container
+{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    
+}
+    .checkbox-text
+{ 
+    font-size: 80%;
+}
 }
 
 @media only screen and (max-width: 600px) {
@@ -119,4 +196,21 @@
     {
         font-size: 80%;
     }
+    
+
+.center {
+    position: absolute;
+    top: 0;
 }
+}
+
+
+
+
+
+
+
+
+
+
+

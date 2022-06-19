@@ -16,14 +16,23 @@
 <body>
     <div class="login-container">
         <div class="left-side">
-            <div class="logo">MaBOr</div>
+            <a class="logo" href="http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/main/index.html">MaBOr</a>
             <div class="left-side-container">
                 <div class="title-left-side">Register</div>
                 <div class="input-container">
+                    
+                    <input type="text" spellcheck="false" placeholder="Name" class="input input-text"/>
                     <input type="text" spellcheck="false" placeholder="Email" class="input input-text"/>
                     <input type="password" placeholder="Password" class="input input-text"/>
                     <input type="password" placeholder="Confirm Password" class="input input-text"/>
+                    <div class="checkbox-container input input-text">
+                        <h1 class="checkbox-text">Cont Organizator</h1>
+                        <input type="checkbox" id="switch" />
+                        <label for="switch">Toggle</label>
+                    </div>
                     <input type="submit" class="input submit-button" onclick="navigate('events')"/>
+
+                    
                 </div>
             </div>
         </div>
@@ -45,7 +54,10 @@
         function navigate(page)
         {
             if(page == 'events')
+            {
                 window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
+                return;
+            }
             window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/"+page+"/"+page+".html";
         }
     </script>
