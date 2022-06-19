@@ -8,7 +8,9 @@ const handleRoute = async function(req,res)
         if(req.url === '/api/login')
         {
             console.log("ddddddddddd");
-            await LoginController.loginUser(req,res);
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify({result: "a mers"}));
+            //await LoginController.loginUser(req,res);
         }
     }
     else if(req.method === 'POST')

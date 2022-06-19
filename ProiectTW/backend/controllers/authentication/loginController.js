@@ -11,7 +11,7 @@ const loginUser = async function loginUser(req,res)
         })
 
         req.on('end', async ()=>{
-            let data = LoginUserHelper.loginUser(req,res, body);
+            let data = await LoginUserHelper.loginUser(req,res, body);
            
         })
         
