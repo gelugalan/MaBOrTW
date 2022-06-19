@@ -4,11 +4,12 @@ const EventController = require("./controllers/events/eventController");
 
 const handleRoute = async function(req, res) {
     if (req.method === 'GET') {
+        
+    } else if (req.method === 'POST') {
         if (req.url === '/api/login') {
             await LoginController.loginUser(req, res);
         }
-    } else if (req.method === 'POST') {
-        if (req.url === '/api/register') {
+        else if (req.url === '/api/register') {
             await RegisterController.registerUser(req, res);
         } else if (req.url === '/api/createEvent') {
             await EventController.createEvent(req, res);

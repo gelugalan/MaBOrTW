@@ -1,8 +1,14 @@
 
+
+
 const callbackForLogin = function(data)
 {
-    console.log("dada");
-    console.log(data);
+    console.log("dada", data);
+}
+
+const badRequest = function(data)
+{
+    
 }
 
 const submitLoginAction = async function()
@@ -13,29 +19,21 @@ const submitLoginAction = async function()
     await makeAjaxCall({username: email, password}, "http://localhost:5000/api/login", callbackForLogin)
 }
 
-
-
-
 const makeAjaxCall = async function(data,route, callback)
 {
     requestAsync(route, callback, data);
 }
 
-
 function requestAsync(URL, callback, data = null){
     let request = new XMLHttpRequest();
     request.onreadystatechange = function () {
-        callback(JSON.parse(request.responseText));
-        // if(request.readyState === 4 && request.status === 200){
-        //     let responseJSON = JSON.parse(request.responseText);
-        //     // if(responseJSON.status === 'SUCCESS')
-        //     //     callback(responseJSON.content);
-            
-        // }
+        if(request.readyState === 4 && request.status === 200){
+            let responseJSON = JSON.parse(request.responseText);
+            callback(responseJSON);
+        }
+        else badRequest(request);
     }
-    console.log(URL);
-    console.log(JSON.stringify(data));
-    request.open('GET', URL);
-    request.send(data);
+    request.open('POST', URL);
+    request.send(JSON.stringify(data));
 }
 
