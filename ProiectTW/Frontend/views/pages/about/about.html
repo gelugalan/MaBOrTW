@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="../navbar/style/style.css">
+
+    <title>Events</title>
+</head>
+
+<body>
+    <nav></nav>
+    <div class="contain-all">
+        <h1 class="title">Dezvoltatori Proiect</h2>
+        <div class="first-container">
+            <div class="upper-left-container">
+                <img class="imagine" src="../../../resources/images/Gelu.jpg">
+                <div class="text">
+                    <h2> Galan Gelu</h2>
+                </div>
+            </div>
+            <div class="upper-left-container">
+                <img class="imagine" src="../../../resources/images/Emil.jpg">
+                <div class="text">
+                    <h2> Emil Harabagiu</h2>
+                </div>
+            </div>
+
+        </div>
+        <div class="second-container">
+            <h1 class="titluProiect">Titlu proiect: MaBOr (Masquerade Ball Smart Organizer)</h1>
+            
+           <h2>Cerinta</h2>
+           <p class="cerinta">Sa se implementeze o aplicatie Web pentru organizarea de (serii de) evenimente de divertisment de tipul balurilor mascate aliniate unor tematici predefinite (exemplificari: cabaret, futurism, mitologie,...) sau specificate de organizatori (una sau mai multe persoane autentificate). Vor fi oferite facilitati pentru expedierea de invitatii -- de dorit, personalizate --, impunerea unor restrictii sau reguli de comportament (i.e. numar maxim de persoane, stil privind decoratiunile interioare sau muzica, interdictii privind consumul de carne, destinat doar persoanelor adulte etc.), rezervare de locuri, managementul de catre organizatori a participantilor identificati pe baza unei adrese de e-mail, a unui cod numeric ori QR generat de sistem, colectarea de impresii (e.g., mesaje textuale, fotografii preluate prin 'upload', selectarea unei pareri de genul "imi place", "oribil", "plictisitor", "super" etc.) in timpul desfasurarii balului sau ulterior, cu posibilitatea partajarii acestora pe diverse retele sociale. Datele gestionate, inclusiv statistici de interes, vor fi disponibile si sub forma de resurse CSV si JSON, iar noutatile referitoate la fiecare eveniment in parte vor fi regasite si ca fluxuri de stiri RSS. </p>
+        </div>
+        <div class="third-container">
+            <iframe src="../../../resources/images/Tw.pdf" width="50%" height="900px">
+            </iframe>
+        </div>
+    </div>
+
+
+
+    <script>
+        fetch("../navbar/navbar.html")
+            .then(response => {
+                return response.text()
+            })
+            .then(data => {
+                document.querySelector("nav").innerHTML = data;
+            });
+
+        fetch("../../components/event/event.html")
+            .then(response => {
+                return response.text()
+            })
+            .then(data => {
+                for (var i = 0; i < 13; i++)
+                    document.querySelector(".event").innerHTML += data;
+            });
+
+        function navigate(page) {
+            if (page == 'events') {
+                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
+                return;
+            }
+            if (page == 'about') {
+                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/about/about.html";
+                return;
+            }
+            if (page == 'contact') {
+                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/contact/contact.html";
+                return;
+            }
+            window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/" + page + "/" + page + ".html";
+        }
+
+
+
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            setTimeout(() => {
+                var buttons = document.querySelectorAll(".button");
+                buttons.forEach((e, x) => {
+                    e.addEventListener("click", (focusButton) => {
+                        buttons.forEach((element, index) => {
+                            element.classList.remove("btn-primary");
+                        })
+                        //console.log("dadaadad");
+                        //focusButton.srcElement.classList. // = [...focusButton.srcElement.classList, "btn-primary"];
+                        e.classList.add("btn-primary");
+                    })
+                })
+            }, 1000);
+        })
+
+
+        function setCorrectTabl() {
+            var buttons = document.querySelectorAll(".button");
+            buttons.forEach((element, index) => {
+
+                if (element.innerHTML != "About")
+                    element.classList.remove("btn-primary");
+            })
+
+        }
+
+    </script>
+</body>
+
+</html>
