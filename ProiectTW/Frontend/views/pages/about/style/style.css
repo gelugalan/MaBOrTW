@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.contain-all {
+    
+    
+    background:url("../../../../resources/images/backabout.jpg") ;
+    background-size: cover;
+    max-width: auto;
+    text-align: center;
+
+}
+.title
+{
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.7rem;
+    
+    margin-bottom: 50px;
+    background: black;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+.first-container {
+    display: flex;
+    align-items: center;
+  justify-content: center;
+}
+
+.upper-left-container {
+    margin: 20px;
+    width: 400px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    padding: 25px;
+
+    border-radius: 20px;
+}
+.upper-left-container:hover {
+    transform: scale(1.05);
+    
+    transition: 0.5s;
+}
+
+.imagine {
+
+    width: 400px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 20px;
+
+}
+
+.text {
+    text-align: center;
+    padding: 10px 20px;
+    
+    font-size: medium;
+}
+
+.cerinta
+{
+    margin: auto;
+  width: 50%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 50px;
+  text-align: justify;
+ 
+  
+    
+    
+}
