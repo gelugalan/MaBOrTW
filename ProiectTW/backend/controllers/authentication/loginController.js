@@ -12,7 +12,6 @@ const loginUser = async function loginUser(req,res)
 
         req.on('end', async ()=>{
             let data = await LoginUserHelper.loginUser(req,res, body);
-           
         })
         
     } catch (error) {
