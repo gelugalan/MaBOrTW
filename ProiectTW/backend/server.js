@@ -10,9 +10,9 @@ const server = http.createServer(async (req,res)=>{
 })
 
 
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true} , () => {
-    console.log('connected to DB!');
-} )
+// mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true} , () => {
+//     console.log('connected to DB!');
+// } )
 
 const PORT = 8080
 
