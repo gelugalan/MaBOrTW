@@ -2,7 +2,6 @@ const requestHelper = require("../../helpers/requestHelper");
 const UserPost = require("../../models/databaseModels/UserPost");
 
 const loginUser = async function(req, res, body) {
-    console.log(body);
     const { username, password } = JSON.parse(body);
     const userPost = new UserPost({
         username,
@@ -19,10 +18,10 @@ const loginUser = async function(req, res, body) {
         return;
     }
 
+    console.log("result", result[0].username);
+
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(result));
-
-    console.log(JSON.stringify(result))
 }
 
 

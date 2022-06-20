@@ -32,6 +32,14 @@ const eventSchema = mongoose.Schema({
     participants: {
         type: Array,
         required: true
+    },
+    likes: {
+        type: Number,
+        required: true
+    },
+    dislikes: {
+        type: Number,
+        required: true
     }
 });
 

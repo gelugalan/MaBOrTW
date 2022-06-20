@@ -4,7 +4,6 @@ const URL = "http://localhost:5000/api/register";
 const callbackForLogin = function(data)
 {
     console.log(data);
-    //window.sessionStorage.setItem('veryPrivate-SecretKey', data[0].username);
     navigate("events");
 }
 

@@ -10,6 +10,7 @@ const callbackForLogin = function(data)
 const badRequest = function(data)
 {
     console.log("Bad Request sorry!");
+    document.getElementById("error").innerHTML = "Something went wrong!";
 }
 
 const getUserData = function()
