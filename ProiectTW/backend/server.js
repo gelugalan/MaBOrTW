@@ -6,6 +6,8 @@ require('dotenv/config');
 
 
 const server = http.createServer(async (req,res)=>{
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST, GET');
     await Router.handleRoute(req,res);
 })
 

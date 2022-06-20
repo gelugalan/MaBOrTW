@@ -3,31 +3,40 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(()=>{
         guardUser();
-        var buttons = document.querySelectorAll(".button");
-        buttons.forEach((e,x)=>
-        {
-            e.addEventListener("click", (focusButton)=>
-            {
-                buttons.forEach((element,index) => {
-                    element.classList.remove("btn-primary");
-                })
-                //console.log("dadaadad");
-                //focusButton.srcElement.classList. // = [...focusButton.srcElement.classList, "btn-primary"];
-                e.classList.add("btn-primary");
-            })
-        })
+        setCorrectTabl();
+
+        getThemes();
     }, 1000);
 })
 
 
+const setCorrectTabl = function()
+{
+    var buttons = document.querySelectorAll(".button");
+    buttons.forEach((e,x)=>
+    {
+        e.addEventListener("click", (focusButton)=>
+        {
+            buttons.forEach((element,index) => {
+                element.classList.remove("btn-primary");
+            })
+            e.classList.add("btn-primary");
+        })
+    })
+}
 function setCorrectTabl()
 {
     var buttons = document.querySelectorAll(".button");
     buttons.forEach((element,index) => {
-                    
-                    if(element.innerHTML != "About")
-                        element.classList.remove("btn-primary");
-                })
+        if(element.innerHTML != "About")
+            element.classList.remove("btn-primary");
+    })
     
 }
+
+const getThemes = async function()
+{
+    
+}
+
 
