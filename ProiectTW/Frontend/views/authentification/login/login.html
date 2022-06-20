@@ -36,21 +36,10 @@
                 <div class="title">New Here?</div>
                 <div class="sign-up-info"><b class="sign-up-highlight">Sign Up</b> and discover more!</div>
                 <button class="sign-up-button" onclick="navigate('register')">Sign Up!</button>
-                <!-- onclick="" -->
             </div>
         </div>
     </div>
     <script src="./scripts/script.js"></script>
-    <script>
-        function navigate(page)
-        {
-            if(page == 'events')
-            {
-                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
-                return;
-            }
-            window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/"+page+"/"+page+".html";
-        }
-    </script>
+    <script src="../../../routes.js"></script>
 </body>
 </html>

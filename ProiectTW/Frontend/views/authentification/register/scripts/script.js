@@ -1,9 +1,10 @@
-const URL = "http://localhost:5000/api/login";
+const URL = "http://localhost:5000/api/register";
 
 
 const callbackForLogin = function(data)
 {
-    window.sessionStorage.setItem('veryPrivate-SecretKey', data[0].username);
+    console.log(data);
+    //window.sessionStorage.setItem('veryPrivate-SecretKey', data[0].username);
     navigate("events");
 }
 
@@ -16,11 +17,18 @@ const getUserData = function()
 {
     var email = document.getElementById("Email").value;
     var password = document.getElementById("Password").value;
+    var confirmPassword = document.getElementById("ConfirmPassword").value;
 
+    if(password !== confirmPassword)
+    {
+        document.getElementById("error").innerHTML = "Password and confirm password must be the same";
+        return;
+    }
+        
     return {username: email, password};
 }
 
-const submitLoginAction = function()
+const submitRegisterAction = function()
 {
     const data = getUserData();
     requestAsync(callbackForLogin, data);
