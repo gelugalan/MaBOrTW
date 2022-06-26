@@ -164,10 +164,20 @@ body {
   transition: 0.4s;
 }
 
-.pets-name label,
+.event-name label,
 .pets-breed label,
 .pets-birthday label,
 .pets-gender label,
+.pets-spayed-neutered label,
+.pets-weight label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.event-name-id label,
+.event-description-id label,
+.event-organiser-id label,
+.event-title-id label,
 .pets-spayed-neutered label,
 .pets-weight label {
   display: block;

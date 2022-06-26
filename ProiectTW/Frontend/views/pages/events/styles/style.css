@@ -44,7 +44,7 @@
     justify-content: space-around
 }
 
-.search-input
+#search-input
 {
     position: relative;
     height: 50%;
