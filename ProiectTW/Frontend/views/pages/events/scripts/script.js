@@ -1,13 +1,5 @@
 
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    setTimeout(()=>{
-        guardUser();
-        setCorrectTabl();
-
-        getThemes();
-    }, 1000);
-})
 
 
 const setCorrectTabl = function()
@@ -24,19 +16,23 @@ const setCorrectTabl = function()
         })
     })
 }
-function setCorrectTabl()
-{
-    var buttons = document.querySelectorAll(".button");
-    buttons.forEach((element,index) => {
-        if(element.innerHTML != "About")
-            element.classList.remove("btn-primary");
-    })
+
+// function setCorrectTabl()
+// {
+//     var buttons = document.querySelectorAll(".button");
+//     buttons.forEach((element,index) => {
+//         if(element.innerHTML != "About")
+//             element.classList.remove("btn-primary");
+//     })
     
-}
-
-const getThemes = async function()
-{
-    
-}
+// }
 
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    setTimeout(()=>{
+        guardUser();
+        setCorrectTabl();
+
+        readEvents();
+    }, 1000);
+})

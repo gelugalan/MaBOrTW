@@ -25,13 +25,20 @@
                 <div class="filter-button">Filter</div>
             </div>
         </div>
-
-        <div class="event"></div>
+        <div class="event-container">
+            <div class="event"></div>
+        </div>
     </div>
-    <script src="../../../helpersScripts/logout.js" ></script>
+
+    
+    <script src="./scripts/readEvents.js"></script>
     <script src="../../../routes.js"></script>
+    <script src="../../../request.js"></script>
+
+    <script src="../../../helpersScripts/logout.js" ></script>
     <script src="../../../helpersScripts/guard.js"></script>
     <script src="./scripts/script.js"></script>
+
     <script>
         fetch("../navbar/navbar.html")
             .then(response => {
