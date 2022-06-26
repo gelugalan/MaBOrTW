@@ -7,7 +7,7 @@ const loginUser = async function(req, res, body) {
         username,
         password
     });
-
+    console.log(userPost.username, userPost.password);
     let result = await UserPost.find({
         username: username.toString()
     });

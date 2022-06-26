@@ -1,18 +1,30 @@
+const PORT = 5500;
+
 function navigate(page)
 {
     if(page == 'events')
     {
-        window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
+        window.location.href = `http://127.0.0.1:${PORT}/views/pages/events/events.html`;
         return;
     }
     if(page == 'about')
     {
-        window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/about/about.html";
+        window.location.href = `http://127.0.0.1:${PORT}/views/pages/about/about.html`;
         return;
     }
     if (page == 'contact') {
-        window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/contact/contact.html";
+        window.location.href = `http://127.0.0.1:${PORT}/views/pages/contact/contact.html`;
         return;
     }
-    window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/"+page+"/"+page+".html";
+    if(page == 'login')
+    {
+        window.location.href = `http://127.0.0.1:${PORT}/views/authentification/login/login.html`;
+        return;
+    }
+    if(page == 'register')
+    {
+        window.location.href = `http://127.0.0.1:${PORT}/views/authentification/register/register.html`;
+        return;
+    }
+    window.location.href = `http://127.0.0.1:${PORT}/views/authentification/"+page+"/"+page+".html`;
 }
