@@ -44,6 +44,14 @@
     -webkit-text-fill-color: transparent;
 }
 
+#error
+{
+    color:red;
+    font-size: 80%;
+    text-align: center;
+    margin-top: 15px;
+}
+
 @media screen and (max-width: 992px) {
     .right-side{
         display: none;

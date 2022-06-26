@@ -21,16 +21,16 @@
                 <div class="title-left-side">Register</div>
                 <div class="input-container">
                     
-                    <input type="text" spellcheck="false" placeholder="Name" class="input input-text"/>
-                    <input type="text" spellcheck="false" placeholder="Email" class="input input-text"/>
-                    <input type="password" placeholder="Password" class="input input-text"/>
-                    <input type="password" placeholder="Confirm Password" class="input input-text"/>
-                    <div class="checkbox-container input input-text">
+                    <input id="Email" type="text" spellcheck="false" placeholder="Email" class="input input-text"/>
+                    <input id="Password" type="password" placeholder="Password" class="input input-text"/>
+                    <input id="ConfirmPassword" type="password" placeholder="Confirm Password" class="input input-text"/>
+                    <!-- <div class="checkbox-container input input-text">
                         <h1 class="checkbox-text">Cont Organizator</h1>
                         <input type="checkbox" id="switch" />
                         <label for="switch">Toggle</label>
-                    </div>
-                    <input type="submit" class="input submit-button" onclick="navigate('events')"/>
+                    </div> -->
+                    <div id="error"></div>
+                    <input type="submit" class="input submit-button" onclick="submitRegisterAction()"/>
 
                     
                 </div>
@@ -49,17 +49,7 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function navigate(page)
-        {
-            if(page == 'events')
-            {
-                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
-                return;
-            }
-            window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/"+page+"/"+page+".html";
-        }
-    </script>
+    <script src="../../../routes.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 </html>

@@ -20,9 +20,10 @@
             <div class="left-side-container">
                 <div class="title-left-side">Login</div>
                 <div class="input-container">
-                    <input type="text" spellcheck="false" placeholder="Email" class="input input-text"/>
-                    <input type="password" placeholder="Password" class="input input-text"/>
-                    <input type="submit" class="input submit-button" onclick="navigate('events')"/>
+                    <input id="Email" type="text" spellcheck="false" placeholder="Email" class="input input-text" value=""/>
+                    <input id="Password" type="password" placeholder="Password" class="input input-text"/>
+                    <div id="error"></div>
+                    <input type="submit" class="input submit-button" onclick="submitLoginAction()"/>
                 </div>
             </div>
         </div>
@@ -37,19 +38,10 @@
                 <div class="sign-up-info"><b class="sign-up-highlight">Sign Up</b> and discover more!</div>
                 <button class="sign-up-button" onclick="navigate('register')">Sign Up!</button>
             </div>
+            
         </div>
     </div>
-
-    <script>
-        function navigate(page)
-        {
-            if(page == 'events')
-            {
-                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
-                return;
-            }
-            window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/"+page+"/"+page+".html";
-        }
-    </script>
+    <script src="./scripts/script.js"></script>
+    <script src="../../../routes.js"></script>
 </body>
 </html>

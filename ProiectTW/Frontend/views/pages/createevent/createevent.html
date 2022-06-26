@@ -16,130 +16,88 @@
 
 <body>
     <nav></nav>
-
     <div class='signup-container'>
         <div class='left-container'>
             <h1>
-                
                 Create your own event
             </h1>
-            <div class='puppy'>
-                <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png'>
-            </div>
         </div>
+
         <div class='right-container'>
+            
+
             <header>
                 <h1>Let's start ! It's time for the best party in town.</h1>
                 <div class='set'>
-                    <div class='pets-name'>
-                        <label for='pets-name'>Name</label>
-                        <input id='pets-name' placeholder="Event Name" type='text'>
+                    <div class='event-title-name'>
+                        <label for='event-name-id'>Event Name:</label>
+                        <input id='event-name-id' name="title" placeholder="Event Title" type='text'>
                     </div>
-                    <div class='pets-breed'>
-                        <label for='pets-breed'>Phone</label>
-                        <input id='pets-breed' placeholder="07********" type='text'>
+                </div>
+                <div class="set">
+                    <div class='event-description'>
+                        <label for='event-description-id'>Description:</label>
+                        <input id='event-description-id' name="description" placeholder="Event Description" type='text'>
                     </div>
                 </div>
                 <div class='set'>
-                    <div class='pets-breed'>
-                        <label for='pets-breed'>Location</label>
-                        <input id='pets-breed' placeholder="Street & Number" type='text'>
-                    </div>
+                    <div>
+                        <label for="theme">Theme:</label>
+                        <select id="event-theme-id" name="theme">
 
-                    <div class='pets-birthday'>
-                        <label for='pets-birthday'>Date</label>
-                        <input id='pets-birthday' placeholder='MM/DD/YYYY' type='text'>
+                        </select>
                     </div>
-                </div>
-                <div class='pets-breed'>
-                    <label for='pets-breed'>Number of Persons</label>
-                    <input id='pets-breed' placeholder="ex: 580" type='text'>
-                </div>
-                <div class='pets-breed'>
-                    <label for='pets-breed'>Organisateour Name</label>
-                    <input id='pets-breed' placeholder="ex: Galan Emil" type='text'>
                 </div>
                 <div class='set'>
-                    <div class='pets-gender'>
-                        <label for='pet-gender-female'>Gender</label>
-                        <div class='radio-container'>
-                            <input checked='' id='pet-gender-female' name='pet-gender' type='radio' value='female'>
-                            <label for='pet-gender-female'>Female</label>
-                            <input id='pet-gender-male' name='pet-gender' type='radio' value='male'>
-                            <label for='pet-gender-male'>Male</label>
-                        </div>
+
+                    <div class="event-start-date">
+                        <label for="event-date-start-id">Start Date:</label>
+                        <input type="date" id="event-date-start-id" name="dateStart">
                     </div>
-                    <div class='pets-spayed-neutered'>
-                        <label for='pet-spayed'>Spayed or Neutered</label>
-                        <div class='radio-container'>
-                            <input checked='' id='pet-spayed' name='spayed-neutered' type='radio' value='spayed'>
-                            <label for='pet-spayed'>Spayed</label>
-                            <input id='pet-neutered' name='spayed-neutered' type='radio' value='neutered'>
-                            <label for='pet-neutered'>Neutered</label>
-                        </div>
+                    <div class="event-end-date">
+                        <label for="event-date-end-id">End Date:</label>
+                        <input type="date" id="event-date-end-id" name="dateEnd">
                     </div>
                 </div>
-                <div class='pets-weight'>
-                    <label for='pet-weight-0-25'>Decoration Style</label>
-                    <div class='radio-container'>
-                        <input checked='' id='pet-weight-0-25' name='pet-weight' type='radio' value='0-25'>
-                        <label class="label1" for='pet-weight-0-25'>Farrytail</label>
-                        <input id='pet-weight-25-50' name='pet-weight' type='radio' value='25-50'>
-                        <label class="label1" for='pet-weight-25-50'>Haunted House</label>
-                        <input id='pet-weight-50-100' name='pet-weight' type='radio' value='50-100'>
-                        <label class="label1" for='pet-weight-50-100'>Royal Palace</label>
-                        <input id='pet-weight-100-plus' name='pet-weight' type='radio' value='100+'>
-                        <label class="label1" for='pet-weight-100-plus'>1980</label>
+                <div class='set'>
+                    <div>
+                        <label for="event-age-limit-id">Age limit:</label>
+                        <select id="event-age-limit-id" name="ageLimit">
+                        </select>
                     </div>
                 </div>
-                <input type="checkbox" id="fruit1" name="fruit-1" value="Apple">
-                <label for="fruit1">Minimum 18</label>
             </header>
             <footer>
                 <div class='set'>
-                    
-                    <button id='next'>Submit</button>
+                    <button id='next' onclick="submitNewEventAction()">Submit</button>
                 </div>
             </footer>
         </div>
     </div>
+    <div id="error"> </div>
 
+    <script src="./scripts/script.js">
+
+    </script>
+    <script src="../../../routes.js">
+    </script>
     <script>
-        fetch("../navbarOrganizator/navbarOrganizator.html")
-            .then(response => {
-                return response.text()
-            })
-            .then(data => {
-                document.querySelector("nav").innerHTML = data;
-            });
 
-        fetch("../../components/event/event.html")
-            .then(response => {
-                return response.text()
-            })
-            .then(data => {
-                for (var i = 0; i < 13; i++)
-                    document.querySelector(".event").innerHTML += data;
-            });
+        function selectOptionCreate() {
 
-        function navigate(page) {
-            if (page == 'events') {
-                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/events/events.html";
-                return;
+            var min = 12,
+                max = 30,
+                select = document.getElementById('event-age-limit-id');
+
+            for (var i = min; i <= max; i++) {
+                var opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = i;
+                select.appendChild(opt);
             }
-            if (page == 'about') {
-                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/about/about.html";
-                return;
-            }
-            if (page == 'contact') {
-                window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/pages/contact/contact.html";
-                return;
-            }
-            window.location.href = "http://127.0.0.1:5500/ProiectTW/Frontend/views/authentification/" + page + "/" + page + ".html";
         }
 
-
-
+        selectOptionCreate();
 
         document.addEventListener('DOMContentLoaded', (event) => {
             setTimeout(() => {
@@ -165,7 +123,6 @@
                 if (element.innerHTML != "About")
                     element.classList.remove("btn-primary");
             })
-
         }
 
     </script>
