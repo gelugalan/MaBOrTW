@@ -164,8 +164,10 @@ const getAttendingEvents = async function(req, res, queryObject) {
         }
 
         let eventResults = await Event.find({
-            participants: { $elemMatch: { username: username } }
+            participants:{ $elemMatch: { username: username }} 
         });
+        console.log(eventResults)
+
         eventResults = eventResults.map(eventResult => ({
             eventId: eventResult._id,
             theme: eventResult.theme,

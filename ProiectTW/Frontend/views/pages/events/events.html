@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="../navbar/style/style.css">
     <link rel="stylesheet" href="../../components/event//style/style.css">
-    <link rel="stylesheet" href="../../components/event//style/left-side-style.css">
-    <link rel="stylesheet" href="../../components//event//style/right-side-event.css">
 
     <title>Events</title>
 </head>
@@ -26,7 +24,7 @@
             </div>
         </div>
         <div class="event-container">
-            <div class="event"></div>
+            <div id="events"></div>
         </div>
     </div>
 
@@ -48,14 +46,14 @@
                 document.querySelector("nav").innerHTML = data;
             });
 
-        fetch("../../components/event/event.html")
-        .then(response => {
-            return response.text()
-        })
-        .then(data => {
-            for(var i = 0; i<13; i++)
-                document.querySelector(".event").innerHTML += data;
-        });
+        // fetch("../../components/event/event.html")
+        // .then(response => {
+        //     return response.text()
+        // })
+        // .then(data => {
+        //     for(var i = 0; i<13; i++)
+        //         document.querySelector(".event").innerHTML += data;
+        // });
 
         
 
