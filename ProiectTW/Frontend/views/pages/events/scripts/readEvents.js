@@ -40,13 +40,14 @@ const createEventContainerTop = (item) => {
     let topCotainer = document.createElement("div");
     topCotainer.classList.add("top");
 
-    var url = `http://127.0.0.1:5500/views/pages/events/events.html/${item.eventId}`;
+    var url = `http://127.0.0.1:5500/views/pages/events/events.html/#${item.eventId}`;
     var aTag = document.createElement('a');
+    aTag.classList.add("share-to-facebook");
     aTag.setAttribute('href',`https://www.facebook.com/sharer/sharer.php?u=${url}`);
     aTag.setAttribute('target',"_blank");
     aTag.setAttribute('rel',"noopener");
 
-    aTag.innerText = "Share to facebook";
+    aTag.innerText = "facebook";
     topCotainer.appendChild(aTag);
 
     let likesContainer = document.createElement("div");
@@ -54,13 +55,13 @@ const createEventContainerTop = (item) => {
 
     let likes = document.createElement("p");
     likes.classList.add("likes-count");
-    likes.innerHTML = item.likes? item.likes : "";
+    likes.innerHTML = item.likes? `Likes: ${item.likes}` : "";
     likesContainer.appendChild(likes);
 
 
     let dislikes = document.createElement("p");
     dislikes.classList.add("likes-count");
-    dislikes.innerHTML = item.dislikes? item.dislikes : "";
+    dislikes.innerHTML = item.dislikes? `Dislikes ${item.dislikes}` : "";
 
     likesContainer.appendChild(dislikes);
     topCotainer.appendChild(likesContainer);

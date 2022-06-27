@@ -262,3 +262,9 @@
     color:white;
 }
 
+.share-to-facebook
+{
+    color:white;
+    text-decoration: none;
+    position:absolute;
+}
