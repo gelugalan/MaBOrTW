@@ -148,6 +148,47 @@ const getAllEvents = async function(req, res, queryObject) {
     }
 }
 
+const getAllEventsNGoing = async function(req, res, queryObject) {
+    try {
+
+        let {
+            username
+        } = queryObject;
+
+        const authResult = await UserPost.find({
+            username: username
+        });
+        if (authResult.length == 0) {
+            res.writeHead(401, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({}));
+            return;
+        }
+
+        let eventResults = await Event.find({
+            participants:{ $not: { $elemMatch: { username: username }}} 
+        });
+
+        eventResults = eventResults.map(eventResult => ({
+            eventId: eventResult._id,
+            theme: eventResult.theme,
+            title: eventResult.title,
+            description: eventResult.description,
+            dateStart: eventResult.dateStart,
+            dateEnd: eventResult.dateEnd,
+            ageLimit: eventResult.ageLimit,
+            likes: eventResult.likes,
+            dislikes: eventResult.dislikes
+        }));
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ eventResults }));
+    } catch (error) {
+        console.log(error);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(error));
+    }
+}
+
 const getAttendingEvents = async function(req, res, queryObject) {
     try {
         let {
@@ -403,7 +444,7 @@ const removeParticipant = async function(req, res) {
             const filter = { _id: eventId };
             const options = { upsert: false };
             const updateDoc = {
-                $pull: { participants: [{ username: username }] }
+                $unset: { participants: [{ username: username }] }
             };
             await Event.updateOne(filter, updateDoc, options);
 
@@ -587,5 +628,6 @@ module.exports = {
     addLike,
     removeLike,
     addDislike,
-    removeDislike
+    removeDislike,
+    getAllEventsNGoing
 }

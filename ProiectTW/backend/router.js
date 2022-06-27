@@ -13,6 +13,8 @@ const handleRoute = async function(req, res) {
             await EventController.filterAllEvents(req, res, queryObject);
         } else if (req.url.startsWith('/api/filterAttendingEvents')) {
             await EventController.filterAttendingEvents(req, res, queryObject);
+        } else if (req.url.startsWith('/api/getAllEventsNGoing')) {
+            await EventController.getAllEventsNGoing(req, res, queryObject);
         } else if (req.url.startsWith('/api/getAllEvents')) {
             await EventController.getAllEvents(req, res, queryObject);
         } else if (req.url.startsWith('/api/getAttendingEvents')) {
