@@ -148,6 +148,46 @@ const getAllEvents = async function(req, res, queryObject) {
     }
 }
 
+const getAllEventsNGoing = async function(req, res, queryObject) {
+    try {
+
+        let {
+            username
+        } = queryObject;
+
+        const authResult = await UserPost.find({
+            username: username
+        });
+        if (authResult.length == 0) {
+            res.writeHead(401, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({}));
+            return;
+        }
+
+        let eventResults = await Event.find({
+            participants:{ $not: { $elemMatch: { username: username }}} 
+        });
+
+        eventResults = eventResults.map(eventResult => ({
+            eventId: eventResult._id,
+            theme: eventResult.theme,
+            title: eventResult.title,
+            description: eventResult.description,
+            dateStart: eventResult.dateStart,
+            dateEnd: eventResult.dateEnd,
+            ageLimit: eventResult.ageLimit,
+            likes: eventResult.likes,
+            dislikes: eventResult.dislikes
+        }));
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ eventResults }));
+    } catch (error) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(error));
+    }
+}
+
 const getAttendingEvents = async function(req, res, queryObject) {
     try {
         let {
@@ -164,8 +204,10 @@ const getAttendingEvents = async function(req, res, queryObject) {
         }
 
         let eventResults = await Event.find({
-            participants: { $elemMatch: { username: username } }
+            participants:{ $elemMatch: { username: username }} 
         });
+        console.log(eventResults)
+
         eventResults = eventResults.map(eventResult => ({
             eventId: eventResult._id,
             theme: eventResult.theme,
@@ -188,6 +230,7 @@ const getAttendingEvents = async function(req, res, queryObject) {
 }
 
 const createEvent = async function(req, res) {
+    
     try {
         let body = '';
         req.on('data', (chunk) => {
@@ -195,6 +238,7 @@ const createEvent = async function(req, res) {
         })
 
         req.on('end', async() => {
+            console.log(body);
             let {
                 username,
                 theme,
@@ -204,10 +248,11 @@ const createEvent = async function(req, res) {
                 dateEnd,
                 ageLimit
             } = JSON.parse(body);
-
+    
             const participants = [];
             const likes = 0;
             const dislikes = 0;
+            theme= "da";
             dateStart = new Date(dateStart);
             dateEnd = new Date(dateEnd);
 
@@ -219,7 +264,7 @@ const createEvent = async function(req, res) {
                 res.end(JSON.stringify({}));
                 return;
             }
-
+            console.log(1);
             const event = new Event({
                 username,
                 theme,
@@ -232,6 +277,7 @@ const createEvent = async function(req, res) {
                 likes,
                 dislikes
             });
+            console.log(2);
 
             event.save()
                 .then((data) => {
@@ -401,7 +447,7 @@ const removeParticipant = async function(req, res) {
             const filter = { _id: eventId };
             const options = { upsert: false };
             const updateDoc = {
-                $pull: { participants: [{ username: username }] }
+                $unset: { participants: [{ username: username }] }
             };
             await Event.updateOne(filter, updateDoc, options);
 
@@ -585,5 +631,6 @@ module.exports = {
     addLike,
     removeLike,
     addDislike,
-    removeDislike
+    removeDislike,
+    getAllEventsNGoing
 }

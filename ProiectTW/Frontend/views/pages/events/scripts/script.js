@@ -17,22 +17,35 @@ const setCorrectTabl = function()
     })
 }
 
-// function setCorrectTabl()
-// {
-//     var buttons = document.querySelectorAll(".button");
-//     buttons.forEach((element,index) => {
-//         if(element.innerHTML != "About")
-//             element.classList.remove("btn-primary");
-//     })
-    
-// }
+const readThemesCallback = (data) => {
+    console.log(data.themeResults);
+    let themeContainer = document.getElementById("search-input");
+    if(themeContainer === null) return;
+    for(var i = 0; data.themeResults.length; i++)
+    {
+        console.log(data.themeResults[i].themeName);
+        let tagOption = document.createElement("option");
+        tagOption.setAttribute('value', data.themeResults[i].themeName);
+        tagOption.innerHTML = data.themeResults[i].themeName;
+        themeContainer.appendChild(tagOption);
+    }
+}
 
+const setThemesInFilter = () => {
+    let URL = addAuthorizationQueryString('getThemes');
+    console.log(URL);
+    requestAsync(readThemesCallback, ()=> {}, null, URL,"GET");
+}
 
 document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(()=>{
         guardUser();
         setCorrectTabl();
 
+        setThemesInFilter();
         readEvents();
     }, 1000);
 })
+
+
+const redirectToCreateEvent = () => navigate("createEvent");
