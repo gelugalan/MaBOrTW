@@ -17,10 +17,10 @@
         <div class="filter-wrapper">
             <div class="page-title">Events</div>
             <div class="actions-wrapper">
-                <select id="search-input">
-                    <option value="volvo">Volvo</option>
+                <!-- <select id="search-input">
                   </select>
-                <div class="filter-button">Filter</div>
+                <div class="filter-button">Filter</div> -->
+                <button class="create-event" onclick="redirectToCreateEvent()">Create event</button>
             </div>
         </div>
         <div class="event-container">
@@ -45,18 +45,6 @@
             .then(data => {
                 document.querySelector("nav").innerHTML = data;
             });
-
-        // fetch("../../components/event/event.html")
-        // .then(response => {
-        //     return response.text()
-        // })
-        // .then(data => {
-        //     for(var i = 0; i<13; i++)
-        //         document.querySelector(".event").innerHTML += data;
-        // });
-
-        
-
     </script>
 </body>
 </html>

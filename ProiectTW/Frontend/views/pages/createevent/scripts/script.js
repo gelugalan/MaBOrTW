@@ -1,7 +1,8 @@
-const { json } = require("body-parser");
+
 
 const callbackForCreateEvent = function (data) {
     console.log(data);
+    navigate("events");
     return JSON.parse(data);
 }
 
@@ -27,11 +28,20 @@ const submitNewEventAction = async function () {
     var theme = document.getElementById("event-theme-id").value;
     var ageLimit = document.getElementById("event-age-limit-id").value;
 
-    await makeAjaxCall({username: username, title, description, dateStart, dateEnd, theme, ageLimit}, "http://ec2-44-203-76-193.compute-1.amazonaws.com:5000/api/createEvent", callbackForCreateEvent);
+    let URL = RequestsUrl.POST.createEvent;
+    console.log(URL);
+
+    console.log({username: username, title, description, dateStart, dateEnd, theme, ageLimit});
+  
+    requestAsync(callbackForCreateEvent, badRequest, {username: username, title, description, dateStart, dateEnd, theme, ageLimit}, URL);
+
+
+    //await makeAjaxCall({username: username, title, description, dateStart, dateEnd, theme, ageLimit}, "http://ec2-44-203-76-193.compute-1.amazonaws.com:5000/api/createEvent", callbackForCreateEvent);
 }
 
 const getEventThemes = async function () {
 
+    
     var username = window.sessionStorage.getItem('veryPrivate-SecretKey');
 
     await makeAjaxCall({username: username}, "http://ec2-44-203-76-193.compute-1.amazonaws.com:5000/api/getTheme", callbackForGetAllEventThemes);

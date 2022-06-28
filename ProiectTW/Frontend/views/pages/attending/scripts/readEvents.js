@@ -17,7 +17,6 @@ const readEventsCallback = function(data) {
 
 const readEvents = () => {
     let URL = addAuthorizationQueryString('getAttendingEvents');
-    console.log(URL);
     requestAsync(readEventsCallback, ErrorEventsReadCallback, null, URL, "GET");
 }
 

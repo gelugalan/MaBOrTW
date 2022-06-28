@@ -267,4 +267,33 @@
     color:white;
     text-decoration: none;
     position:absolute;
+    padding: 5px 15px;
+    background-color: white;
+    color:black;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.create-event
+{
+    background-color: rgb(243, 42, 42);
+    color:white;
+    border: none;
+    border-radius: 15px;
+    height: 50%;
+    position: relative;
+    top:35%;
+    transform: translateY(-50%);
+    margin: 10px 25px;
+    width: 100px;
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.create-event:hover
+{
+    box-shadow: 0 0 15px rgba(243, 42, 42, .5);
 }

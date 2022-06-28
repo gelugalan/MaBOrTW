@@ -183,7 +183,6 @@ const getAllEventsNGoing = async function(req, res, queryObject) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ eventResults }));
     } catch (error) {
-        console.log(error);
         res.writeHead(500, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify(error));
     }
@@ -231,6 +230,7 @@ const getAttendingEvents = async function(req, res, queryObject) {
 }
 
 const createEvent = async function(req, res) {
+    
     try {
         let body = '';
         req.on('data', (chunk) => {
@@ -238,6 +238,7 @@ const createEvent = async function(req, res) {
         })
 
         req.on('end', async() => {
+            console.log(body);
             let {
                 username,
                 theme,
@@ -247,10 +248,11 @@ const createEvent = async function(req, res) {
                 dateEnd,
                 ageLimit
             } = JSON.parse(body);
-
+    
             const participants = [];
             const likes = 0;
             const dislikes = 0;
+            theme= "da";
             dateStart = new Date(dateStart);
             dateEnd = new Date(dateEnd);
 
@@ -262,7 +264,7 @@ const createEvent = async function(req, res) {
                 res.end(JSON.stringify({}));
                 return;
             }
-
+            console.log(1);
             const event = new Event({
                 username,
                 theme,
@@ -275,6 +277,7 @@ const createEvent = async function(req, res) {
                 likes,
                 dislikes
             });
+            console.log(2);
 
             event.save()
                 .then((data) => {

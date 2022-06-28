@@ -6,7 +6,6 @@ const EventController = require("./controllers/events/eventController");
 const handleRoute = async function(req, res) {
     if (req.method === 'GET') {
         const queryObject = url.parse(req.url, true).query;
-        console.log(queryObject);
         if (req.url.startsWith('/api/getThemes')) {
             await EventController.getThemes(req, res, queryObject);
         } else if (req.url.startsWith('/api/filterAllEvents')) {
@@ -26,6 +25,7 @@ const handleRoute = async function(req, res) {
         } else if (req.url === '/api/register') {
             await RegisterController.registerUser(req, res);
         } else if (req.url === '/api/createEvent') {
+            console.log("aa");
             await EventController.createEvent(req, res);
         } else if (req.url === '/api/updateEvent') {
             await EventController.updateEvent(req, res);

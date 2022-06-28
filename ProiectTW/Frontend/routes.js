@@ -19,6 +19,10 @@ function navigate(page) {
         window.location.href = `${ROOT_URL}/views/pages/contact/contact.html`;
         return;
     }
+    if (page == 'createEvent') {
+        window.location.href = `${ROOT_URL}/views/pages/createevent/createevent.html`;
+        return;
+    }
     if (page == 'login') {
         window.location.href = `${ROOT_URL}/views/authentification/login/login.html`;
         return;
