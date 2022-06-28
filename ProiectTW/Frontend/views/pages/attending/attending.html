@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,17 +11,18 @@
 
     <title>Events</title>
 </head>
+
 <body>
     <nav></nav>
 
     <div class="events-container">
         <div class="filter-wrapper">
-            <div class="page-title">Events</div>
+            <div class="page-title">Attending Events</div>
             <div class="actions-wrapper">
-                <!-- <select id="search-input">
+                <select id="search-input">
+                    <option value="volvo">Volvo</option>
                   </select>
-                <div class="filter-button">Filter</div> -->
-                <button class="create-event" onclick="redirectToCreateEvent()">Create event</button>
+                <div class="filter-button">Filter</div>
             </div>
         </div>
         <div class="event-container">
@@ -28,12 +30,12 @@
         </div>
     </div>
 
-    
+
     <script src="./scripts/readEvents.js"></script>
     <script src="../../../routes.js"></script>
     <script src="../../../request.js"></script>
 
-    <script src="../../../helpersScripts/logout.js" ></script>
+    <script src="../../../helpersScripts/logout.js"></script>
     <script src="../../../helpersScripts/guard.js"></script>
     <script src="./scripts/script.js"></script>
 
@@ -45,6 +47,16 @@
             .then(data => {
                 document.querySelector("nav").innerHTML = data;
             });
+
+        // fetch("../../components/event/event.html")
+        // .then(response => {
+        //     return response.text()
+        // })
+        // .then(data => {
+        //     for(var i = 0; i<13; i++)
+        //         document.querySelector(".event").innerHTML += data;
+        // });
     </script>
 </body>
+
 </html>
